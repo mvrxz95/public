@@ -17,19 +17,20 @@ async def on_ready():
     print('Bot is running and has synced.')
 
 # Establish Command Name and Description 
-@bot.tree.command(name='***Enter a name***', description='***Enter a description***')
+@bot.tree.command(name='mvr_lookup', description='cree par mvr xz, le bot donne des informations précises sur une adresse IP')
 
 # Bot Prompt, API Call, and Response Functionality
-@app_commands.describe(user_input = "***Ener a Prompt for the user***: ")                 # Prompt User for Input
-async def bot_name(interaction: discord.Interaction, user_input: str):                 
+@app_commands.describe(user_input = "***met ici une adresse IP***: ")                 # Prompt User for Input
+async def MVR Lookup (interaction: discord.Interaction, user_input: str):                 
 
     # Use Requests to Obtain Data from API
-    url = f'***Enter an API Endpoint***{apikey}***Input Variable***{user_input}'
+    API_KEY
+    url = f'https://api.geolocation.io/ipgeo?apiKey={apikey}&ip-{user_input}'
     response = requests.get(url)
     json_response = response.json()
 
     # Send Message Containing Requested Data to User
-    await interaction.response.send_message(f'***Enter a message to send to user***', ephemeral=True)
+    await interaction.response.send_message(f'IP: {json_response["ip"]}\nCountry:{json_response["country_name"]}\nISP:{json_response["isp"]}', ephemeral=True)
     return
 
 bot.run(token) # Run Bot
